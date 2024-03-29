@@ -1,0 +1,16 @@
+services:
+  build:
+    build: build
+    volumes:
+      - htdocs:/opt/
+    command: "sh ./bootstrap.sh"
+
+  alm:
+    image: devprom/alm:latest
+    ports:
+      - "80:80"
+    volumes:
+      - htdocs:/var/www/devprom/
+
+volumes:
+  htdocs:
