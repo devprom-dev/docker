@@ -1,32 +1,53 @@
 version: '3.3'
 
 services:
+
   db:
     env_file:
-     - .env
+      - .env
     image: mariadb:10.7
     container_name: alm-db
 #    network_mode: host
     restart: unless-stopped
     environment:
-     MARIADB_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
-     TZ: "Europe/Moscow"
+      MARIADB_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      TZ: "Europe/Moscow"
     volumes:
-     - ./mysql/devprom.cnf:/etc/mysql/conf.d/z-devprom.cnf
-     - ./mysql/setup.sh:/docker-entrypoint-initdb.d/setup.sh
-     - dbdata:/var/lib/mysql
+      - ./mysql/devprom.cnf:/etc/mysql/conf.d/z-devprom.cnf
+      - ./mysql/setup.sh:/docker-entrypoint-initdb.d/setup.sh
+      - dbdata:/var/lib/mysql
+
   app:
     image: devprom/alm-app:latest
     container_name: alm-app
     privileged: true
     ports:
-     - ${WEB_PORT}:80
+      - 80:80
     restart: unless-stopped
     volumes:
-     - /var/www/devprom:/var/www/devprom:rw
+      - /var/www/devprom:/var/www/devprom:rw
+      - ./apache2/devprom.conf:/etc/apache2/sites-enabled/devprom.conf 
     cap_add:
-     - SYS_NICE
-     - DAC_READ_SEARCH
-     - SYS_ADMIN
+      - SYS_NICE
+      - DAC_READ_SEARCH
+      - SYS_ADMIN
+
+  draw:
+    image: jgraph/drawio
+    container_name: draw
+    restart: unless-stopped
+
+  plantuml:
+    image: plantuml/plantuml-server
+    container_name: plantuml
+    restart: unless-stopped
+
+  math:
+    image: devprom/math
+    container_name: math
+    expose:
+      - "80"
+    restart: unless-stopped
+
 volumes:
   dbdata:
