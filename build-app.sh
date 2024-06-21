@@ -54,12 +54,13 @@ RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
 COPY php/devprom.ini /etc/php/7.3/apache2/conf.d/
 COPY apache2/devprom.conf /etc/apache2/sites-available/
 COPY apache2/ldap.conf /etc/apache2/sites-available/
-RUN a2ensite devprom.conf
+RUN a2ensite devprom.conf && a2enmod proxy_http
 
 CMD ( set -e && \
   service cron start && \
   service rsyslog start && \
   service postfix start && \
+  chown www-data:www-data -R /var/www/devprom && \
   export APACHE_RUN_USER=www-data && export APACHE_RUN_GROUP=www-data && export APACHE_PID_FILE=/var/run/apache2/.pid && \
   export APACHE_RUN_DIR=/var/run/apache2 && export APACHE_LOCK_DIR=/var/lock/apache2 && export APACHE_LOG_DIR=/var/log/apache2 && \
   exec apache2 -DFOREGROUND )
