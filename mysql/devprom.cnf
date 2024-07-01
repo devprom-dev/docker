@@ -25,10 +25,10 @@ join_buffer_size = 1G
 default-time-zone = '+00:00'
 table_definition_cache = 600
 
-wait_timeout = 10
+wait_timeout = 60
 interactive_timeout = 10
 max_connections = 300
-max_statement_time = 30
+max_statement_time = 60
 innodb_lock_wait_timeout = 60
 
 #log_slow_query = 1
