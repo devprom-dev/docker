@@ -19,7 +19,7 @@ RUN apt-get -y update && apt-get -y install tzdata apt-utils rsyslog default-jre
 
 RUN echo "deb http://deb.debian.org/debian buster-backports main" | tee /etc/apt/sources.list.d/buster-backports.list
 RUN apt-get -y update
-RUN apt-get -y install -t bullseye-backports libreoffice-common libreoffice-writer libreoffice-java-common
+RUN apt-get -y install -t buster-backports libreoffice-common libreoffice-writer libreoffice-java-common
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y vim postfix sasl2-bin && \
