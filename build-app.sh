@@ -5,6 +5,7 @@ MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 
 #
 ENV CROSS_COMPILE=/usr/bin/
+ENV DEBIAN_FRONTEND noninteractive
 
 #
 RUN apt-get -y update && apt-get -y install apache2 default-mysql-client \
@@ -15,7 +16,6 @@ RUN apt-get -y update && apt-get -y install apache2 default-mysql-client \
 
 RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy proxy_http authnz_ldap authn_anon session session_cookie request auth_form session_crypto
 
-ENV DEBIAN_FRONTEND noninteractive
 RUN postconf -e "mydestination = localhost" && \
   postconf -e "myhostname = devprom.local" && \
   postconf -e "smtpd_sasl_auth_enable=yes" && \
