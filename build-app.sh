@@ -17,7 +17,7 @@ RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy proxy_http au
 #
 RUN apt-get -y update && apt-get -y install tzdata apt-utils rsyslog default-jre
 
-RUN echo "deb http://deb.debian.org/debian bullseye-backports main" | tee /etc/apt/sources.list.d/bullseye-backports.list
+RUN echo "deb http://deb.debian.org/debian buster-backports main" | tee /etc/apt/sources.list.d/buster-backports.list
 RUN apt-get -y update
 RUN apt-get -y install -t bullseye-backports libreoffice-common libreoffice-writer libreoffice-java-common
 
