@@ -47,7 +47,7 @@ RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
 COPY php/devprom.ini /etc/php/7.3/apache2/conf.d/
 COPY apache2/devprom.conf /etc/apache2/sites-available/
 COPY apache2/ldap.conf /etc/apache2/sites-available/
-RUN a2ensite devprom.conf && a2enmod proxy_http
+RUN a2ensite devprom.conf
 
 CMD ( set -e && \
   service cron start && \
