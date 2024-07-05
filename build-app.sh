@@ -1,6 +1,6 @@
 #!/bin/bash
 cat << _EOF_ > Dockerfile
-FROM debian:10.10
+FROM debian:11.10
 MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 
 #
@@ -8,22 +8,15 @@ ENV CROSS_COMPILE=/usr/bin/
 
 #
 RUN apt-get -y update && apt-get -y install apache2 default-mysql-client \
-  php php-mysql libapache2-mod-php php-gd php-common php-bcmath \
-  php-mysqli php-curl php-imap php-ldap php-xml php-mbstring php-zip php-imagick \
-  zip unzip wget git
+  php7.4 php7.4-mysql libapache2-mod-php php7.4-gd php7.4-common php7.4-bcmath \
+  php7.4-mysqli php7.4-curl php7.4-imap php7.4-ldap php7.4-xml php7.4-mbstring php7.4-zip php7.4-imagick \
+  zip unzip wget git tzdata apt-utils rsyslog default-jre libreoffice-common libreoffice-writer \
+  libreoffice-java-common vim postfix sasl2-bin
 
 RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy proxy_http authnz_ldap authn_anon session session_cookie request auth_form session_crypto
 
-#
-RUN apt-get -y update && apt-get -y install tzdata apt-utils rsyslog default-jre
-
-RUN echo "deb http://deb.debian.org/debian buster-backports main" | tee /etc/apt/sources.list.d/buster-backports.list
-RUN apt-get -y update
-RUN apt-get -y install -t buster-backports libreoffice-common libreoffice-writer libreoffice-java-common
-
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get install -y vim postfix sasl2-bin && \
-  postconf -e "mydestination = localhost" && \
+RUN postconf -e "mydestination = localhost" && \
   postconf -e "myhostname = devprom.local" && \
   postconf -e "smtpd_sasl_auth_enable=yes" && \
   postconf -e "broken_sasl_auth_clients=yes" && \
