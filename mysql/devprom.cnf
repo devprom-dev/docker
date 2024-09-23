@@ -31,7 +31,7 @@ table_definition_cache = 600
 wait_timeout = 60
 interactive_timeout = 10
 max_connections = 100
-max_statement_time = 60
+max_statement_time = 30
 innodb_lock_wait_timeout = 60
 
 #log_slow_query = 1
