@@ -22,11 +22,6 @@ RUN apt-get -y update && apt-get -y install apache2 default-mysql-server default
 
 RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy proxy_http authnz_ldap authn_anon session session_cookie request auth_form session_crypto
 
-#
-RUN service mariadb start && mysqladmin -u root password $MYSQL_ROOT_PASSWORD && \
-  mysql -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE USER devprom@localhost IDENTIFIED BY '$MYSQL_PASSWORD'" && \
-  mysql -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO devprom@localhost WITH GRANT OPTION"
-
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y vim postfix sasl2-bin && \
   postconf -e "mydestination = localhost" && \
