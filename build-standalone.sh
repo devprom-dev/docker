@@ -14,7 +14,7 @@ VOLUME /var/www/devprom
 VOLUME /var/lib/mysql
 
 #
-RUN apt-get -y update && apt-get -y install apache2 default-mysql-server default-mysql-client \
+RUN apt-get -y update && apt-get -y install cron apache2 default-mysql-server default-mysql-client \
   php7.4 php7.4-mysql libapache2-mod-php7.4 php7.4-gd php7.4-common php7.4-bcmath \
   php7.4-mysqli php7.4-curl php7.4-imap php7.4-ldap php7.4-xml php7.4-mbstring php7.4-zip php7.4-imagick \
    zip unzip wget git tzdata apt-utils rsyslog default-jre libreoffice-common libreoffice-writer \
