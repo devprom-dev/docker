@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 #
 RUN apt-get -y update && apt-get -y install apache2 default-mysql-server default-mysql-client \
-  php7.4 php7.4-mysql libapache2-mod-php php7.4-gd php7.4-common php7.4-bcmath \
+  php7.4 php7.4-mysql libapache2-mod-php7.4 php7.4-gd php7.4-common php7.4-bcmath \
   php7.4-mysqli php7.4-curl php7.4-imap php7.4-ldap php7.4-xml php7.4-mbstring php7.4-zip php7.4-imagick \
    zip unzip wget git tzdata apt-utils rsyslog default-jre libreoffice-common libreoffice-writer \
   libreoffice-java-common vim postfix sasl2-bin
@@ -19,7 +19,7 @@ RUN apt-get -y update && apt-get -y install apache2 default-mysql-server default
 RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy proxy_http authnz_ldap authn_anon session session_cookie request auth_form session_crypto
 
 #
-RUN service mysql start && mysqladmin -u root password $MYSQL_ROOT_PASSWORD && \
+RUN service mariadb start && mysqladmin -u root password $MYSQL_ROOT_PASSWORD && \
   mysql -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE USER devprom@localhost IDENTIFIED BY '$MYSQL_PASSWORD'" && \
   mysql -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO devprom@localhost WITH GRANT OPTION"
 
@@ -63,7 +63,7 @@ CMD ( set -e && \
   service cron start && \
   service rsyslog start && \
   service postfix start && \
-  service mysql start && \
+  service mariadb start && \
   export APACHE_RUN_USER=www-data && export APACHE_RUN_GROUP=www-data && export APACHE_PID_FILE=/var/run/apache2/.pid && \
   export APACHE_RUN_DIR=/var/run/apache2 && export APACHE_LOCK_DIR=/var/lock/apache2 && export APACHE_LOG_DIR=/var/log/apache2 && \
   exec apache2 -DFOREGROUND )
