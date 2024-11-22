@@ -59,6 +59,6 @@ CMD ( set -e && \
   exec apache2 -DFOREGROUND )
 _EOF_
 
-docker pull debian:10.10
+docker pull debian:11.10
 docker build -t devprom/alm-app:latest .
 docker push devprom/alm-app:latest
