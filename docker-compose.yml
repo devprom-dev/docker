@@ -27,7 +27,7 @@ services:
     restart: unless-stopped
     volumes:
       - /var/www/devprom:/var/www/devprom:rw
-      - ./apache2/devprom.conf:/etc/apache2/sites-enabled/devprom.conf 
+      - ./apache2:/etc/apache2/sites-available
     cap_add:
       - SYS_NICE
       - DAC_READ_SEARCH
