@@ -48,7 +48,8 @@ RUN chown -R www-data:www-data /var/www/devprom && chmod -R 755 /var/www/devprom
 
 #
 COPY php/devprom.ini /etc/php/7.4/apache2/conf.d/
-RUN a2ensite devprom.conf
+COPY apache2/devprom.conf /etc/apache2/sites-available/
+RUN rm /etc/apache2/sites-enabled/* && a2ensite devprom.conf
 
 CMD ( set -e && \
   service cron start && \
