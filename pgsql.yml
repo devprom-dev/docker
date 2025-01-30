@@ -1,5 +1,5 @@
 services:
-  db:
+  db-pgsql:
     env_file: !override
       - .env
     ports: !override
@@ -14,4 +14,7 @@ services:
       postgres
     volumes: !override
       - ./postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
-      - dbdata:/var/lib/postgresql/data
+      - dbdata_pgsql:/var/lib/postgresql/data
+
+volumes:
+  dbdata_pgsql:
