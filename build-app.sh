@@ -49,6 +49,7 @@ RUN chown -R www-data:www-data /var/www/devprom && chmod -R 755 /var/www/devprom
 #
 COPY php/devprom.ini /etc/php/7.4/apache2/conf.d/
 COPY apache2/devprom.conf /etc/apache2/sites-available/
+COPY apache2/mpm_prefork.conf /etc/apache2/mods-enabled/
 RUN rm /etc/apache2/sites-enabled/* && a2ensite devprom.conf
 
 CMD ( set -e && \
