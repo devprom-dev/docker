@@ -8,5 +8,5 @@ ENTRYPOINT ["/entrypoint.sh"]
 _EOF_
 
 docker pull ollama/ollama:latest
-docker build -f Dockerfile.ollama -t devprom/ollama:latest .
+docker build -t devprom/ollama:latest .
 docker push devprom/ollama:latest
