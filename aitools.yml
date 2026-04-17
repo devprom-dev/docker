@@ -7,6 +7,8 @@ services:
     
   chromadb:
     image: chromadb/chroma:latest
+    env_file:
+      - .env
     restart: unless-stopped
     privileged: true
     ports:
@@ -20,6 +22,8 @@ services:
 
   ollama:
     image: ollama/ollama:latest
+    env_file:
+      - .env
     restart: unless-stopped
     privileged: true
     ports:
