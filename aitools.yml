@@ -7,6 +7,7 @@ services:
     
   chromadb:
     image: chromadb/chroma:latest
+    container_name: chromadb
     env_file:
       - .env
     restart: unless-stopped
@@ -22,6 +23,7 @@ services:
 
   ollama:
     image: ollama/ollama:latest
+    container_name: ollama
     env_file:
       - .env
     restart: unless-stopped
