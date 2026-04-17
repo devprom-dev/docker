@@ -1,0 +1,46 @@
+services:
+  mcp:
+    ports: 
+      - "9345:80"
+    image: devprom/mcp-alm-app:latest
+    container_name: alm-mcp
+    
+  chromadb:
+    image: chromadb/chroma:latest
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "127.0.0.1:${PORT_CHROMADB}:8000"
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma_data
+      - ANONYMIZED_TELEMETRY=FALSE
+    volumes:
+      - chroma_data:/chroma_data
+
+  ollama:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "127.0.0.1:${PORT_OLLAMA}:11434"
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+      - OLLAMA_HOST=0.0.0.0
+    volumes:
+      - ollama_data:/root/.ollama
+
+  ollama_models:
+    image: alpine/curl
+    depends_on:
+      - ollama
+    entrypoint: >
+      /bin/sh -c "
+      sleep 10;
+      curl http://127.0.0.1:11434/api/pull -d '{\"model\": \"nomic-embed-text-v2-moe\"}';
+      exit 0;
+      "
+
+volumes:
+  chroma_data:
+  ollama_data:
