@@ -12,9 +12,9 @@ RUN apt-get -y update && apt-get -y install cron apache2 default-mysql-client \
   php7.4 php7.4-mysql php7.4-pgsql libapache2-mod-php php7.4-gd php7.4-common php7.4-bcmath \
   php7.4-mysqli php7.4-curl php7.4-imap php7.4-ldap php7.4-xml php7.4-mbstring php7.4-zip php7.4-imagick php7.4-redis \
   zip unzip wget git tzdata apt-utils rsyslog default-jre libreoffice-common libreoffice-writer \
-  libreoffice-java-common vim postfix sasl2-bin
+  libreoffice-java-common vim postfix sasl2-bin libapache2-mod-auth-gssapi
 
-RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy proxy_http authnz_ldap authn_anon session session_cookie request auth_form session_crypto
+RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy proxy_http authnz_ldap authn_anon session session_cookie request auth_form session_crypto vhost_alias
 
 RUN echo "deb https://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main" > /etc/apt/sources.list.d/postgresql.list
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
@@ -48,6 +48,7 @@ RUN chown -R www-data:www-data /var/www/devprom && chmod -R 755 /var/www/devprom
 
 #
 COPY php/devprom.ini /etc/php/7.4/apache2/conf.d/
+COPY php/policy.xml /etc/ImageMagick-6/
 COPY apache2/devprom.conf /etc/apache2/sites-available/
 COPY apache2/mpm_prefork.conf /etc/apache2/mods-enabled/
 RUN rm /etc/apache2/sites-enabled/* && a2ensite devprom.conf
