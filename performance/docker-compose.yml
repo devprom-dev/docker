@@ -1,0 +1,14 @@
+services:
+  jmeter:
+    image: alpine/jmeter:5.6.3
+    container_name: devprom-jmeter
+    env_file:
+      - .env
+    volumes:
+      - ./:/tests
+    working_dir: /tests
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - mkdir -p /tests/results && exec /entrypoint.sh -n -t /tests/DevpromPerformanceTestSuiteHttpRequest.jmx -l /tests/results/log.jtl -j /tests/results/jmeter.log -e -o /tests/results/report -f -Jdevprom_auth_key="$$devprom_auth_key" -Jbase_url="$$base_url" -Jport_number="$$port_number" -Jnumber_of_threds="$$number_of_threds" -Jproject_codename="$$project_codename" -Jtask_id="$$task_id" -Juser_id="$$user_id" -Jrequirement_id="$$requirement_id" -Jtask_type="$$task_type"
