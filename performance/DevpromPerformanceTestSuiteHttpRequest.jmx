@@ -109,7 +109,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">User-Agent</stringProp>
@@ -128,14 +128,14 @@
           <boolProp name="CacheManager.controlledByThread">false</boolProp>
         </CacheManager>
         <hashTree/>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Reader Throughput Controller">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Reader Throughput Controller" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <stringProp name="ThroughputController.percentThroughput">${reader_percent}</stringProp>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET task_id]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET task_id]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -158,7 +158,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="false">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
               <stringProp name="RegexExtractor.refname">task_id</stringProp>
@@ -169,7 +169,7 @@
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET requirement_id]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET requirement_id]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -192,7 +192,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor">
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="false">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <boolProp name="RegexExtractor.default_empty_value">false</boolProp>
               <stringProp name="RegexExtractor.refname">requirement_id</stringProp>
@@ -203,7 +203,7 @@
             </RegexExtractor>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Project Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Project Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -226,11 +226,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="98823697">&lt;span class=&quot;title&quot;&gt;Пожелания&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -247,7 +247,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Current Tasks Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Current Tasks Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -284,11 +284,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-178812940">&lt;span class=&quot;title&quot;&gt;Текущие задачи&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -299,13 +299,13 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action [3 sec]">
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action [3 sec]" enabled="true">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET View Task Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET View Task Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -320,11 +320,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1965924828">objectid=&quot;${task_id}&quot;</stringProp>
               </collectionProp>
@@ -335,13 +335,13 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action [3 sec]">
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action [3 sec]" enabled="true">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [REST POST Spent Time Data]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [REST POST Spent Time Data]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -362,11 +362,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -376,7 +376,7 @@
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="96784904">error</stringProp>
               </collectionProp>
@@ -387,13 +387,13 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action [3 sec]">
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action [3 sec]" enabled="true">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Requirements Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Requirements Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -430,11 +430,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1733368525">&lt;span class=&quot;title&quot;&gt;Нереализованные требования&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -487,7 +487,7 @@
             <hashTree/>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="1424143055">object-class=&quot;Requirement&quot; object-id=&quot;${requirement_id}&quot;</stringProp>
+                <stringProp name="4153121">object-id=&quot;${requirement_id}&quot;</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -503,14 +503,14 @@
           </TestAction>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Writer Throughput Controller">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="Writer Throughput Controller" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
           <stringProp name="ThroughputController.percentThroughput">${writer_percent}</stringProp>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Project Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Project Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -533,11 +533,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="98823697">&lt;span class=&quot;title&quot;&gt;Пожелания&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -554,7 +554,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Requirements Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Requirements Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -595,7 +595,7 @@
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1733368525">&lt;span class=&quot;title&quot;&gt;Нереализованные требования&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -612,7 +612,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET New Requirement Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET New Requirement Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -701,7 +701,7 @@
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-338037634">href=&quot;#tab-main&quot;</stringProp>
               </collectionProp>
@@ -718,7 +718,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [POST Requirement Data]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [POST Requirement Data]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -773,7 +773,7 @@
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -783,7 +783,7 @@
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-906530001">Общие ресурсы доступны</stringProp>
               </collectionProp>
@@ -800,7 +800,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Current Tasks Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Current Tasks Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -837,11 +837,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-178812940">&lt;span class=&quot;title&quot;&gt;Текущие задачи&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -858,7 +858,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET New Task Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET New Task Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -940,7 +940,7 @@
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-338037634">href=&quot;#tab-main&quot;</stringProp>
               </collectionProp>
@@ -957,7 +957,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [POST Task Data]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [POST Task Data]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -1008,11 +1008,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -1022,7 +1022,7 @@
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="96784904">error</stringProp>
               </collectionProp>
@@ -1033,7 +1033,7 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action [3 sec]">
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action [3 sec]" enabled="true">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
             <stringProp name="ActionProcessor.duration">3000</stringProp>
@@ -1047,7 +1047,7 @@
           <stringProp name="ThroughputController.percentThroughput">${manager_percent}</stringProp>
         </ThroughputController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Project Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Project Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -1070,11 +1070,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="98823697">&lt;span class=&quot;title&quot;&gt;Пожелания&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -1091,7 +1091,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Dashboard Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Dashboard Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -1114,11 +1114,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-79015400">&lt;span class=&quot;title&quot;&gt;Панель управления&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -1135,7 +1135,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Project Plan Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Project Plan Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -1176,7 +1176,7 @@
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1653397991">&lt;span class=&quot;title&quot;&gt;План&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -1193,7 +1193,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Worklog Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Worklog Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -1216,11 +1216,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="470951173">&lt;span class=&quot;title&quot;&gt;Списания&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -1237,7 +1237,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Log Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Log Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -1260,11 +1260,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-616844627">&lt;span class=&quot;title&quot;&gt;Журнал изменений&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -1281,7 +1281,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Metrics Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Metrics Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -1304,11 +1304,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1226591117">&lt;span class=&quot;title&quot;&gt;Метрики&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -1325,7 +1325,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Budget Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Budget Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -1352,7 +1352,7 @@
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1841837244">&lt;span class=&quot;title&quot;&gt;Бюджет&lt;/span&gt;</stringProp>
               </collectionProp>
@@ -1369,7 +1369,7 @@
             <stringProp name="ActionProcessor.duration">3000</stringProp>
           </TestAction>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Resource Load Page]">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request [GET Resource Load Page]" enabled="true">
             <intProp name="HTTPSampler.concurrentPool">6</intProp>
             <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
             <stringProp name="HTTPSampler.port">${port_number}</stringProp>
@@ -1392,11 +1392,11 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
               <stringProp name="DurationAssertion.duration">5000</stringProp>
             </DurationAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-668588216">&lt;span class=&quot;title&quot;&gt;Загрузка задачами&lt;/span&gt;</stringProp>
               </collectionProp>
