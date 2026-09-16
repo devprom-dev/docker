@@ -48,11 +48,3 @@ docker compose up --abort-on-container-exit --exit-code-from jmeter
 | `results/log.jtl` | Сырые результаты сэмплов |
 | `results/jmeter.log` | Лог JMeter |
 | `results/report/index.html` | HTML-отчёт (Dashboard) |
-
-Отчёт можно открыть в браузере:
-
-```powershell
-start results\report\index.html
-```
-
-Повторный запуск удаляет предыдущие `log.jtl` и HTML-отчёт (`-f`).
