@@ -4,6 +4,8 @@ services:
       - "9345:80"
     image: devprom/mcp-alm-app:latest
     container_name: alm-mcp
+    environment:
+      MCP_ALLOWED_HOSTS: alm-mcp
     
   chromadb:
     image: chromadb/chroma:latest
