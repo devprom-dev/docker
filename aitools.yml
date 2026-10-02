@@ -1,11 +1,13 @@
 services:
   mcp:
     ports: 
-      - "9345:80"
+      - "127.0.0.1:9345:80"
     image: devprom/mcp-alm-app:latest
     container_name: alm-mcp
+    restart: unless-stopped
+    privileged: true
     environment:
-      MCP_ALLOWED_HOSTS: alm-mcp
+      MCP_DNS_REBINDING_PROTECTION: "0"
     
   chromadb:
     image: chromadb/chroma:latest
@@ -48,7 +50,30 @@ services:
       curl http://127.0.0.1:11434/api/pull -d '{\"model\": \"nomic-embed-text-v2-moe\"}';
       exit 0;
       "
+  hermes:
+    image: devprom/hermes:latest
+    restart: unless-stopped
+    container_name: alm-hermes
+    privileged: true
+    command: ["gateway", "run"]
+    env_file:
+      - .env
+    environment:
+      API_SERVER_ENABLED: "true"
+      API_SERVER_PORT: "8642"
+      API_SERVER_KEY: "${HERMES_API_SERVER_KEY:?set in .env}"
+      API_SERVER_HOST: "0.0.0.0"
+      HERMES_DASHBOARD: "true"
+      HERMES_UID: "1000"
+      HERMES_GID: "1000"
+      DEVPROM_AGENT_PLUGIN_KEY: "${HERMES_PLUGIN_KEY:?set in .env}"
+    volumes:
+      - hermes_state:/opt/data
+    ports:
+      - "127.0.0.1:8642:8642"
+      - "127.0.0.1:9119:9119"
 
 volumes:
   chroma_data:
   ollama_data:
+  hermes_state:
