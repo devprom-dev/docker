@@ -1,18 +1,18 @@
 services:
   db-pgsql:
-    env_file: !override
+    env_file:
       - .env
-    ports: !override
+    ports:
       - 5432:5432
     image: postgres:16.3
     container_name: alm-pgsql
-    environment: !override
+    environment:
       POSTGRES_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
       POSTGRES_DEVPROM_PASSWORD: "${MYSQL_PASSWORD}"
       TZ: "Europe/Moscow"
     command: >
       postgres
-    volumes: !override
+    volumes:
       - ./postgres/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
       - dbdata_pgsql:/var/lib/postgresql/data
 
