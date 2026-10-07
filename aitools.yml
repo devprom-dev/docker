@@ -67,6 +67,7 @@ services:
       HERMES_UID: "1000"
       HERMES_GID: "1000"
       DEVPROM_AGENT_PLUGIN_KEY: "${HERMES_PLUGIN_KEY:?set in .env}"
+      SANDBOX_IMAGE: "devprom/hermes-sandbox:latest"
     volumes:
       - hermes_state:/opt/data
     ports:
