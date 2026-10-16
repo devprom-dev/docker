@@ -28,10 +28,6 @@ services:
     volumes:
       - /var/www/devprom:/var/www/devprom:rw
       - ./apache2:/etc/apache2/sites-available
-    cap_add:
-      - SYS_NICE
-      - DAC_READ_SEARCH
-      - SYS_ADMIN
 
   draw:
     image: jgraph/drawio
