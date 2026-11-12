@@ -5,6 +5,7 @@ services:
     ports: 
       - "127.0.0.1:9345:80"
     image: devprom/mcp-alm-app:latest
+    container_name: alm-mcp
     restart: unless-stopped
     privileged: true
     environment:
