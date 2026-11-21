@@ -8,13 +8,13 @@ ENV CROSS_COMPILE=/usr/bin/
 ENV DEBIAN_FRONTEND noninteractive
 
 # external deps
-RUN echo "deb https://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg main" > /etc/apt/sources.list.d/postgresql.list && \
-  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
-  apt-get -y update && apt-get -y install postgresql-client-16
-
 RUN apt-get -y update && apt-get -y upgrade && apt-get -y install apt-transport-https lsb-release ca-certificates wget && \
   wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
   echo "deb https://packages.sury.org/php/ bookworm main" | tee /etc/apt/sources.list.d/php.list
+  
+RUN echo "deb https://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg main" > /etc/apt/sources.list.d/postgresql.list && \
+  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+  apt-get -y update && apt-get -y install postgresql-client-16
 
 # required packages
 RUN apt-get -y update && apt-get -y install cron apache2 default-mysql-client \
