@@ -10,13 +10,13 @@ ENV DEBIAN_FRONTEND noninteractive
 #
 RUN apt-get -y update && apt-get -y install cron apache2 default-mysql-client \
   php7.4 php7.4-mysql php7.4-pgsql libapache2-mod-php php7.4-gd php7.4-common php7.4-bcmath \
-  php7.4-mysqli php7.4-curl php7.4-imap php7.4-ldap php7.4-xml php7.4-mbstring php7.4-zip php7.4-imagick php7.4-redis \
-  zip unzip wget git tzdata apt-utils rsyslog default-jre libreoffice-common libreoffice-writer \
+  php7.4-mysqli php7.4-curl php7.4-imap php7.4-ldap php7.4-xml php7.4-mbstring php7.4-zip php7.4-imagick php7.4-redis php7.4-xdebug \
+  zip unzip wget git tzdata apt-utils poppler-utils rsyslog default-jre libreoffice-common libreoffice-writer \
   libreoffice-java-common vim postfix sasl2-bin libapache2-mod-auth-gssapi
 
 RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy proxy_http authnz_ldap authn_anon session session_cookie request auth_form session_crypto vhost_alias
 
-RUN echo "deb https://apt.postgresql.org/pub/repos/apt/ bullseye-pgdg main" > /etc/apt/sources.list.d/postgresql.list
+RUN echo "deb https://apt-archive.postgresql.org/pub/repos/apt/ bullseye-pgdg main" > /etc/apt/sources.list.d/postgresql.list
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 RUN apt-get -y update && apt-get -y install postgresql-client-16
 
