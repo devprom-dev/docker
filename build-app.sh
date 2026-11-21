@@ -8,7 +8,7 @@ ENV CROSS_COMPILE=/usr/bin/
 ENV DEBIAN_FRONTEND noninteractive
 
 # external deps
-RUN apt-get -y update && apt-get -y upgrade && apt-get -y install apt-transport-https lsb-release ca-certificates wget apt-utils && \
+RUN apt-get -y update && apt-get -y upgrade && apt-get -y install apt-transport-https lsb-release ca-certificates wget apt-utils gnupg-utils && \
   wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
   echo "deb https://packages.sury.org/php/ bookworm main" | tee /etc/apt/sources.list.d/php.list
   
