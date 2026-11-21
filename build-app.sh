@@ -1,24 +1,29 @@
 #!/bin/bash
 cat << _EOF_ > Dockerfile
-FROM debian:11.10
+FROM debian:bookworm
 MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 
 #
 ENV CROSS_COMPILE=/usr/bin/
 ENV DEBIAN_FRONTEND noninteractive
 
-#
+# external deps
+RUN echo "deb https://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg main" > /etc/apt/sources.list.d/postgresql.list && \
+  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+  apt-get -y update && apt-get -y install postgresql-client-16
+
+RUN apt-get -y update && apt-get -y upgrade && apt-get -y install apt-transport-https lsb-release ca-certificates wget && \
+  wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
+  echo "deb https://packages.sury.org/php/ bookworm main" | tee /etc/apt/sources.list.d/php.list
+
+# required packages
 RUN apt-get -y update && apt-get -y install cron apache2 default-mysql-client \
-  php7.4 php7.4-mysql php7.4-pgsql libapache2-mod-php php7.4-gd php7.4-common php7.4-bcmath \
+  php7.4 php7.4-mysql php7.4-pgsql libapache2-mod-php7.4 php7.4-gd php7.4-common php7.4-bcmath \
   php7.4-mysqli php7.4-curl php7.4-imap php7.4-ldap php7.4-xml php7.4-mbstring php7.4-zip php7.4-imagick php7.4-redis php7.4-xdebug \
-  zip unzip wget git tzdata apt-utils poppler-utils rsyslog default-jre libreoffice-common libreoffice-writer \
+  zip unzip git tzdata apt-utils poppler-utils rsyslog default-jre libreoffice-common libreoffice-writer \
   libreoffice-java-common vim postfix sasl2-bin libapache2-mod-auth-gssapi
 
 RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy proxy_http authnz_ldap authn_anon session session_cookie request auth_form session_crypto vhost_alias
-
-RUN echo "deb https://apt-archive.postgresql.org/pub/repos/apt/ bullseye-pgdg main" > /etc/apt/sources.list.d/postgresql.list
-RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-RUN apt-get -y update && apt-get -y install postgresql-client-16
 
 RUN postconf -e "mydestination = localhost" && \
   postconf -e "myhostname = devprom.local" && \
@@ -63,6 +68,5 @@ CMD ( set -e && \
   exec apache2 -DFOREGROUND )
 _EOF_
 
-docker pull debian:11.10
 docker build -t devprom/alm-app:latest .
 docker push devprom/alm-app:latest
