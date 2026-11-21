@@ -8,7 +8,7 @@ ENV CROSS_COMPILE=/usr/bin/
 ENV DEBIAN_FRONTEND noninteractive
 
 # external deps
-RUN apt-get -y update && apt-get -y upgrade && apt-get -y install apt-transport-https lsb-release ca-certificates wget && \
+RUN apt-get -y update && apt-get -y upgrade && apt-get -y install apt-transport-https lsb-release ca-certificates wget apt-utils && \
   wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
   echo "deb https://packages.sury.org/php/ bookworm main" | tee /etc/apt/sources.list.d/php.list
   
@@ -20,7 +20,7 @@ RUN echo "deb https://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg main" > /e
 RUN apt-get -y update && apt-get -y install cron apache2 default-mysql-client \
   php7.4 php7.4-mysql php7.4-pgsql libapache2-mod-php7.4 php7.4-gd php7.4-common php7.4-bcmath \
   php7.4-mysqli php7.4-curl php7.4-imap php7.4-ldap php7.4-xml php7.4-mbstring php7.4-zip php7.4-imagick php7.4-redis php7.4-xdebug \
-  zip unzip git tzdata apt-utils poppler-utils rsyslog default-jre libreoffice-common libreoffice-writer \
+  zip unzip git tzdata poppler-utils rsyslog default-jre libreoffice-common libreoffice-writer \
   libreoffice-java-common vim postfix sasl2-bin libapache2-mod-auth-gssapi
 
 RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy proxy_http authnz_ldap authn_anon session session_cookie request auth_form session_crypto vhost_alias
