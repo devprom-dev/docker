@@ -20,6 +20,8 @@ services:
   app:
     image: devprom/alm-app:latest
     container_name: alm-app
+    env_file:
+      - .env
     privileged: true
     ports:
       - ${WEB_PORT}:80
