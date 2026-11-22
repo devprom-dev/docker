@@ -60,7 +60,6 @@ RUN rm /etc/apache2/sites-enabled/* && a2ensite devprom.conf
 
 CMD ( set -e && \
   service cron start && \
-  service rsyslog start && \
   service postfix start && \
   chown www-data:www-data -R /var/www/devprom && \
   export APACHE_RUN_USER=www-data && export APACHE_RUN_GROUP=www-data && export APACHE_PID_FILE=/var/run/apache2/.pid && \
