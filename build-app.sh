@@ -29,7 +29,7 @@ RUN postconf -e "mydestination = localhost" && \
   postconf -e "myhostname = devprom.local" && \
   postconf -e "smtpd_sasl_auth_enable=yes" && \
   postconf -e "broken_sasl_auth_clients=yes" && \
-  postconf -e "smtpd_relay_restrictions=permit_sasl_authenticated,reject_unauth_destination" && \
+  postconf -e "smtpd_relay_restrictions=permit_mynetworks permit_sasl_authenticated defer_unauth_destination" && \
   postconf -e "smtpd_sasl_security_options = noanonymous" && \
   echo noreply | saslpasswd2 -c -p -u devprom.local noreply && \
   ln  /etc/sasldb2 /var/spool/postfix/etc/sasldb2 && \
